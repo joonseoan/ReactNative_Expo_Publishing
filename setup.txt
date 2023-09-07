@@ -1,0 +1,147 @@
+- Config in Expo
+  . Google Expo Application Service (EAS): Need to go through all doc.
+  . In app.json (We can find the doc in Expo SDK section of EAS)\
+    {
+        "expo": {
+            "name": "My Recipe Book",
+            // slug: Friendly url name for publishing. In expo app, it is important.
+            // expo.dev/@project-owner/myAppName
+            "slug": "react-native-redux-context_api-6",
+             // version: versioning our app which is communicating with different versions
+             // might be deployed (It is user-based version)
+            "version": "1.0.0",
+            "orientation": "portrait",
+            "icon": "./assets/icon.png",
+            "userInterfaceStyle": "light",
+            "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+            },
+            // expo allow us to update without version update
+            "updates": {
+                "fallbackToCacheTimeout": 0
+            },
+            "assetBundlePatterns": [
+            "**/*"
+            ],
+            "ios": {
+                // ios version (internal)
+                "buildNumber": "1.1.0",
+                "supportsTablet": true
+            },
+            "android": {
+                // android version (internal)
+                "versionCode": 1,
+                "adaptiveIcon": {
+                    "foregroundImage": "./assets/adaptive-icon.png",
+                    "backgroundColor": "#FFFFFF"
+                }
+            },
+            "web": {
+            "favicon": "./assets/favicon.png"
+            }
+        }
+    }
+
+    . Environment Variables and Secrets??
+    . Splash Screen and icon setup setup
+      We can replace any png files to adaptive-icon.png, favicon.png, icon.png, and splash.png
+
+- Building app. (EAS Build part in doc):https://docs.expo.dev/build/setup/
+  . Create an expo account at https://expo.dev/signup
+    email: 180 Google
+    username: *oo*s*o.a*
+    pw: sheridan
+  . sudo npm install -g eas-cli in terminal
+  . eas login in terminal
+  . Under project, in terminal, eas build:configure
+    Automatically generate expo project: yes
+    Platform: all
+  . Then we can find `eas.json` file in the project tree.
+  . Before `Run Build`, please test as followed.
+    1) Building APKs for Android emulators and devices
+      In eas.json,
+        {
+            "cli": {
+                "version": ">= 5.2.0"
+            },
+            "build": {
+                "development": {
+                "developmentClient": true,
+                "distribution": "internal"
+                },
+                "preview": {
+                    // For android APKs testing
+                    "android" : {
+                        "buildType": "apk"
+                    },
+                    "distribution": "internal"
+                },
+                "production": {}
+            },
+            "submit": {
+                "production": {}
+            }
+        }
+
+       In terminal, eas build -p android --profile preview
+        - What would you like your Android application id to be? com.companyname.projectname
+            Then it will create ""package": "com.joonseo.an.reactnativereduxcontext_api6"" in app.json.
+        - Generate an Android Keystore: generating key for author or publisher. Say `yes`
+            It will take a long time.
+            After keystore, it will give us the link or QR code.
+            If we have error or fail we need to visit expo login and see what happened (dependency problems)
+        - Visit Expo Website 
+          In Builds selection we can find "Build artifact". Find three dot icon and find "download"
+        - Open Android emulator and drag and drop the downloaded file to android emulator screen.
+        - Visit all app screens and we can find MyRecipe app.
+
+        ** There is aab file to test the app in google store but we need to pay.
+           (We can find guideline in the doc)
+
+        2) Building iOS
+
+        In eas.json,
+        {
+            "cli": {
+                "version": ">= 5.2.0"
+            },
+            "build": {
+                "development": {
+                "developmentClient": true,
+                "distribution": "internal"
+                },
+                "preview": {
+                    // For android APKs testing
+                    "android" : {
+                        "buildType": "apk"
+                    },
+                    "ios": {
+                        "simulator": true
+                    },
+                    "distribution": "internal"
+                },
+                "production": {}
+            },
+            "submit": {
+                "production": {}
+            }
+        }
+
+        (Open ios simulator first)
+        eas build -p ios --profile preview
+        What would you like your iOS bundle identifier to be? com.joonseo.an.reactnativereduxcontext
+        Do you want to log in to your Apple account? › (Y/n) n
+        Then, it finally gives us link : https://expo.dev/artifacts/eas/vPEMm5QxMCA794nrWsGrmX.tar.gz 
+        (For Android, we can find the link just in case in Expo website)
+         Install and run the iOS build on a simulator? …y --> Finally install the app to simulator
+       
+
+- production app: need to pay!!!
+
+
+
+
+
+    

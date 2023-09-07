@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "My Recipe Book",
+    "slug": "react-native-redux-context_api-6",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "buildNumber": "1.1.0",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.joonseo.an.reactnativereduxcontext"
+    },
+    "android": {
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.joonseo.an.reactnativereduxcontext_api6"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c9a36b2d-316c-4344-bbdf-df56e6aa7e16"
+      }
+    }
+  }
+}
